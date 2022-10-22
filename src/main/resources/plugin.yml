@@ -1,0 +1,8 @@
+name: BlinkersOnly
+version: '${project.version}'
+main: blinkersonly.blinkersonly.BlinkersOnly
+api-version: 1.19
+description: for the BlinkersOnly server
+commands:
+  ping:
+    description: give ping
