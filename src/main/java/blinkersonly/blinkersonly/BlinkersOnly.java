@@ -37,7 +37,7 @@ public class BlinkersOnly extends JavaPlugin implements Listener  {
         player.sendMessage(ChatColor.GOLD + "Welcome back " + ChatColor.RED + "FRIEND");
 
         String[] Possibilites = {"ip", "health", "xp", "name", "time",
-        "bed", "total exp", "getFacing", "holding", "ping", "gay"};
+        "bed", "total exp", "getFacing", "holding", "ping", "poop"};
 
         String selection =
                 Possibilites[(int) Math.round(((Math.random() * (Possibilites.length - 0)) + 0))];
@@ -63,8 +63,8 @@ public class BlinkersOnly extends JavaPlugin implements Listener  {
         }else if (selection.equals(Possibilites[9])){
             joinInfo = "your ping is "+player.getPing();
         } else if (selection.equals(Possibilites[10])) {
-            joinInfo = "hahaha you got the" + ChatColor.DARK_GREEN +
-                    ChatColor.MAGIC + ChatColor.BOLD + ChatColor.RESET + " option HAHAH";
+            joinInfo = ChatColor.RESET + "hahaha you got the" + ChatColor.DARK_GREEN +
+                    ChatColor.MAGIC + ChatColor.BOLD + "POOP" + " option HAHAH";
         }
 
         event.setJoinMessage(ChatColor.GOLD + player.getName() + " " + ChatColor.BLUE + joinInfo);
