@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.command.Command;
@@ -69,5 +70,11 @@ public class BlinkersOnly extends JavaPlugin implements Listener  {
 
         event.setJoinMessage(ChatColor.BLUE+"nooooooooooo " +
                 ChatColor.GOLD + player.getName() + ChatColor.BLUE+" is here :(");
+    }
+
+    @EventHandler
+    public void onLeave(PlayerQuitEvent event){
+        event.setQuitMessage(ChatColor.GOLD + event.getPlayer().getName() +
+                ChatColor.BLUE + " left the mofo game!");
     }
 }
