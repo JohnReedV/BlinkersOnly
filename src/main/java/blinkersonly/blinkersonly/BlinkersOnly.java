@@ -1,14 +1,19 @@
 package blinkersonly.blinkersonly;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.EventHandler;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.inventory.ItemStack;
 
 public class BlinkersOnly extends JavaPlugin implements Listener  {
 
@@ -29,6 +34,23 @@ public class BlinkersOnly extends JavaPlugin implements Listener  {
             player.sendMessage(("Your ping is " + player.getPing()));
         }
         return true;
+    }
+    @EventHandler
+    public void onPlayerDeath(PlayerDeathEvent event) {
+        Player player = event.getEntity().getPlayer();
+        ItemStack head = new ItemStack(Material.PLAYER_HEAD);
+
+        SkullMeta meta = (SkullMeta)head.getItemMeta();
+        meta.setOwner(player.getDisplayName());
+        meta.setDisplayName(ChatColor.GREEN + player.getDisplayName() + "s" + ChatColor.AQUA + " head");
+        head.setItemMeta(meta);
+        event.getDrops().add(head);
+    }
+
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent event) {
+        Player player = event.getPlayer();
+        player.sendMessage(ChatColor.BLUE + "yooo... you NEED to get some head!");
     }
 
     @EventHandler
